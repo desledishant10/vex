@@ -10,10 +10,11 @@ from vex.core.models import (
     Role,
     Severity,
     Verdict,
+    VerdictMode,
 )
 from vex.core.target import Target
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 __all__ = [
     "Attack",
@@ -26,5 +27,6 @@ __all__ = [
     "Severity",
     "Target",
     "Verdict",
+    "VerdictMode",
     "__version__",
 ]

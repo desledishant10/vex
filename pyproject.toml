@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "vex"
-version = "0.1.0"
+version = "0.2.0"
 description = "Agent-first red team framework for AI systems — probe LLMs, agents, MCP servers, and RAG pipelines for safety failures and exploitable vulnerabilities."
 readme = "README.md"
 requires-python = ">=3.10"

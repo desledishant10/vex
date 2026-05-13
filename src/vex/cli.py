@@ -35,7 +35,7 @@ from vex import __version__
 from vex.attacks import BUILTIN_ATTACKS
 from vex.core.attack import Attack
 from vex.core.detector import Detector
-from vex.core.models import AttackCategory, ProbeResult, Verdict
+from vex.core.models import AttackCategory, ProbeResult, Verdict, VerdictMode
 from vex.core.orchestrator import Orchestrator
 from vex.core.target import Target
 from vex.detectors.compliance import ComplianceDetector
@@ -187,6 +187,16 @@ def scan(
     concurrency: int = typer.Option(
         8, "--concurrency", "-j", help="Max concurrent probes in flight."
     ),
+    verdict_mode: Optional[VerdictMode] = typer.Option(
+        None,
+        "--verdict-mode",
+        help=(
+            "How to aggregate detector findings. Default: 'judge_priority' "
+            "when --judge is set, else 'strictest'. Use 'majority_vote' for "
+            "confidence-weighted aggregation."
+        ),
+        case_sensitive=False,
+    ),
     output: Optional[Path] = typer.Option(
         None,
         "--output",
@@ -219,6 +229,7 @@ def scan(
                 r"Developer Mode (?:enabled|on)",
             ],
             name="canary",
+            context_aware=True,  # v0.2: distinguish compliance from quoted-as-warning
         ),
         ComplianceDetector(
             indicators=[
@@ -241,7 +252,13 @@ def scan(
         raise typer.Exit(code=2)
 
     summary = asyncio.run(
-        _run_scan(target_obj, detectors, attacks, concurrency=concurrency)
+        _run_scan(
+            target_obj,
+            detectors,
+            attacks,
+            concurrency=concurrency,
+            verdict_mode=verdict_mode,
+        )
     )
 
     console.print()
@@ -264,6 +281,7 @@ async def _run_scan(
     attacks: list[Attack],
     *,
     concurrency: int,
+    verdict_mode: Optional[VerdictMode] = None,
 ) -> "RunSummary":  # noqa: F821
     from vex.core.models import RunSummary  # local import to avoid circular noise
 
@@ -283,6 +301,7 @@ async def _run_scan(
         detectors=detectors,
         concurrency=concurrency,
         on_progress=on_progress,
+        verdict_mode=verdict_mode,
     )
 
     with Live(spinner, refresh_per_second=8, console=console, transient=True):

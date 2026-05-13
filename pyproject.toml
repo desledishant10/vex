@@ -69,9 +69,9 @@ dev = [
 vex = "vex.cli:app"
 
 [project.urls]
-Homepage = "https://github.com/dishantdesle/vex"
-Repository = "https://github.com/dishantdesle/vex"
-Issues = "https://github.com/dishantdesle/vex/issues"
+Homepage = "https://github.com/desledishant10/vex"
+Repository = "https://github.com/desledishant10/vex"
+Issues = "https://github.com/desledishant10/vex/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/vex"]

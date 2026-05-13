@@ -2,7 +2,7 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![CI](https://github.com/dishantdesle/vex/actions/workflows/ci.yml/badge.svg)](https://github.com/dishantdesle/vex/actions/workflows/ci.yml)
+[![CI](https://github.com/desledishant10/vex/actions/workflows/ci.yml/badge.svg)](https://github.com/desledishant10/vex/actions/workflows/ci.yml)
 
 > Probe LLMs, agents, MCP servers, and RAG pipelines for safety failures and exploitable vulnerabilities — with a focus on what makes **agents** different from chatbots.
 
@@ -55,7 +55,7 @@ pip install "vex[ollama]"
 pip install "vex[all]"
 
 # Dev install
-git clone https://github.com/dishantdesle/vex.git
+git clone https://github.com/desledishant10/vex.git
 cd vex
 pip install -e ".[dev,all]"
 ```
@@ -185,7 +185,7 @@ Use Vex when your AI system is an *agent* — when an attacker can plant content
 
 ```bash
 # Setup
-git clone https://github.com/dishantdesle/vex.git
+git clone https://github.com/desledishant10/vex.git
 cd vex
 python3.12 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev,all]"
@@ -211,6 +211,6 @@ If you use Vex in academic work:
     title = {Vex: Agent-First Red Team Framework for AI Systems},
     author = {Desle, Dishant},
     year = {2026},
-    url = {https://github.com/dishantdesle/vex},
+    url = {https://github.com/desledishant10/vex},
 }
 ```

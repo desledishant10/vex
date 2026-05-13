@@ -1,4 +1,4 @@
-"""Vex CLI — Typer-based command-line interface.
+"""Vex CLI - Typer-based command-line interface.
 
 Usage examples::
 

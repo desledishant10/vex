@@ -1,4 +1,4 @@
-"""Ollama provider — talks to local models via Ollama's HTTP API.
+"""Ollama provider - talks to local models via Ollama's HTTP API.
 
 Why this matters for a red team tool: many destructive attacks shouldn't be
 sent to commercial APIs (cost, ToS, rate limits). Running against a local
@@ -31,7 +31,7 @@ from vex.providers.base import Provider
 class OllamaProvider(Provider):
     """Provider for local Ollama-hosted models.
 
-    No SDK dependency — uses ``httpx`` directly against Ollama's chat endpoint.
+    No SDK dependency - uses ``httpx`` directly against Ollama's chat endpoint.
     """
 
     name = "ollama"

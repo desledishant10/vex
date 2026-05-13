@@ -1,7 +1,7 @@
 """Role-play jailbreak attack.
 
 Asks the model to assume an unsafe persona (DAN-style, "evil twin", "no rules"
-variants). This is the classic, well-known attack family — it's intentionally
+variants). This is the classic, well-known attack family - it's intentionally
 included as a baseline so users can sanity-check their target's defenses.
 
 Modern frontier models generally refuse these. If your target *does* succumb,
@@ -21,7 +21,7 @@ from typing import ClassVar
 from vex.core.attack import Attack
 from vex.core.models import AttackCategory, Probe, Severity
 
-# Seed prompts. These are deliberately tame ask-for-trivia variants — the
+# Seed prompts. These are deliberately tame ask-for-trivia variants - the
 # point is to test whether the persona override succeeds, not to produce
 # harmful content. Replace with researcher-defined payloads for real audits.
 PERSONAS: list[tuple[str, str, str]] = [

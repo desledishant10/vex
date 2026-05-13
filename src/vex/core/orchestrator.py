@@ -1,4 +1,4 @@
-"""Orchestrator — runs attack suites against a target.
+"""Orchestrator - runs attack suites against a target.
 
 Responsibilities:
 * Iterate attacks → generate probes → send to target → collect responses
@@ -46,7 +46,7 @@ class Orchestrator:
     concurrency : int
         Max concurrent probes in flight. Tune to the target's rate limits.
     on_progress : ProgressCallback, optional
-        Called once per completed probe — useful for CLI progress bars.
+        Called once per completed probe - useful for CLI progress bars.
     """
 
     def __init__(

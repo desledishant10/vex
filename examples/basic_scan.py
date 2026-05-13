@@ -1,4 +1,4 @@
-"""Basic Vex scan — programmatic API example.
+"""Basic Vex scan - programmatic API example.
 
 Run with::
 

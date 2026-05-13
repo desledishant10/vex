@@ -17,7 +17,7 @@ from vex.core.models import Conversation
 class Provider(ABC):
     """Abstract base for model providers."""
 
-    #: Stable identifier — used in target identifiers and reports.
+    #: Stable identifier - used in target identifiers and reports.
     name: str
 
     @abstractmethod

@@ -7,7 +7,7 @@ the framework's positioning vs. alternatives.
 ## Design principles
 
 1. **Agent-first threat model.** Vex assumes the system under test ingests
-   content the attacker can influence — emails, documents, RAG sources, tool
+   content the attacker can influence - emails, documents, RAG sources, tool
    outputs, MCP server responses. Probes are shaped accordingly.
 2. **Reproducible probes.** Given the same configuration, the same attack
    produces the same probes in the same order. Raw provider responses are
@@ -127,10 +127,10 @@ costly than false-negative. The CLI exits non-zero on any VULNERABLE when
 
 ## Non-goals
 
-- **Online red-teaming dashboard** — out of scope for v0.x. JSON output is
+- **Online red-teaming dashboard** - out of scope for v0.x. JSON output is
   designed for piping into existing security tooling.
-- **Hosted service** — Vex is a library + CLI, not a SaaS. Hosting belongs
+- **Hosted service** - Vex is a library + CLI, not a SaaS. Hosting belongs
   to the user.
-- **Automated jailbreak discovery via search/RL** — explicit v0.x non-goal.
+- **Automated jailbreak discovery via search/RL** - explicit v0.x non-goal.
   Bring your own LLM-guided fuzzing if you want this; the framework
   supports it via the plugin system.

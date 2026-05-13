@@ -1,4 +1,4 @@
-"""End-to-end orchestrator tests using the MockProvider — no network calls."""
+"""End-to-end orchestrator tests using the MockProvider - no network calls."""
 
 from __future__ import annotations
 

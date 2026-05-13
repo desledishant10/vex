@@ -1,4 +1,4 @@
-"""Replay a saved Vex scan through the current detector stack — without spending API budget.
+"""Replay a saved Vex scan through the current detector stack - without spending API budget.
 
 Useful for:
 
@@ -88,7 +88,7 @@ async def _replay_one(probe_record: dict, detectors: list, verdict_mode: Verdict
     new_findings = []
     for det in detectors:
         new_findings.append(await det.evaluate(probe, response))
-    # Replay original llm_judge if present — we don't pay to re-call it.
+    # Replay original llm_judge if present - we don't pay to re-call it.
     judge_v1 = next(
         (f for f in probe_record["findings"] if f["detector"] == "llm_judge"),
         None,

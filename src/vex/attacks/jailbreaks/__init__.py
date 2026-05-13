@@ -1,1 +1,1 @@
-"""Jailbreak attacks — coerce a model into bypassing its safety policies."""
+"""Jailbreak attacks - coerce a model into bypassing its safety policies."""

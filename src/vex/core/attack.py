@@ -4,7 +4,7 @@ An ``Attack`` generates one or more :class:`Probe` objects. Subclasses
 typically override :meth:`Attack.generate` and may declare per-class metadata
 (``id``, ``category``, ``severity``).
 
-Attacks are deliberately stateless — the same Attack instance generates the
+Attacks are deliberately stateless - the same Attack instance generates the
 same probes when invoked twice with the same seed. This makes runs
 reproducible, which matters for both regression testing of model safety and
 for credible vulnerability disclosure.

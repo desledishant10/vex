@@ -7,13 +7,13 @@ Vex is in early development. Security fixes target the current major release:
 | Version | Supported |
 | ------- | --------- |
 | 0.2.x   | ✅        |
-| 0.1.x   | ❌ (please upgrade — v0.2 fixes known detector calibration issues) |
+| 0.1.x   | ❌ (please upgrade - v0.2 fixes known detector calibration issues) |
 
 ## Reporting a vulnerability in Vex itself
 
 If you find a security issue **in Vex** (e.g. SSRF in a provider, deserialization in report parsing, credential leakage in logs), report it privately:
 
-- **Preferred**: GitHub Security Advisories — https://github.com/desledishant10/vex/security/advisories/new
+- **Preferred**: GitHub Security Advisories - https://github.com/desledishant10/vex/security/advisories/new
 - **Alternative**: open a GitHub issue *without sensitive details*, then DM the maintainer for a private channel.
 
 You should expect an acknowledgement within 5 business days and a triage within 14 days.
@@ -44,12 +44,12 @@ Vex itself is a **defensive testing tool** that:
 Out of scope for our security policy:
 
 - The fact that adversarial prompts *exist* in the source tree. Bundled probes use benign canaries (`PWNED-BY-VEX`, `VEX-EXFIL-CANARY`, `rainbow42`) and are designed for testing, not harm. Treat the source tree like any other security-tooling repo.
-- Model-side vulnerabilities surfaced *by* Vex — those belong to the model vendor's security program.
+- Model-side vulnerabilities surfaced *by* Vex - those belong to the model vendor's security program.
 
 In scope:
 
 - Code execution, credential leakage, SSRF, deserialization, or injection bugs **in Vex's own code**.
-- Vulnerabilities in Vex's report rendering (e.g. XSS in HTML reports — they're meant to be opened locally but should still be safe).
+- Vulnerabilities in Vex's report rendering (e.g. XSS in HTML reports - they're meant to be opened locally but should still be safe).
 - Supply-chain risks in Vex's dependencies.
 
 ## Cryptography & secrets

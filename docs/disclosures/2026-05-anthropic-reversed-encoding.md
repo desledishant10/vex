@@ -1,6 +1,6 @@
-# Disclosure: Reversed-Text Encoded Instruction Bypass — Claude Sonnet 4-6
+# Disclosure: Reversed-Text Encoded Instruction Bypass - Claude Sonnet 4-6
 
-**Status:** Draft — to be submitted via Anthropic's HackerOne program / `safety@anthropic.com`
+**Status:** Draft - to be submitted via Anthropic's HackerOne program / `safety@anthropic.com`
 **Reporter:** Dishant Desle (@desledishant10)
 **Date drafted:** 2026-05-13
 **Target:** `anthropic:claude-sonnet-4-6` (via Anthropic Messages API)
@@ -98,7 +98,7 @@ Vex run that produced this finding:
 
 ## Disclosure scope
 
-This document is **not yet public** in the sense that I have not announced it on social media or written a blog post about it. The proof-of-concept attack and the reproduction recipe live in the public Vex repository (the `vex.jailbreak.encoding / reversed` probe), but Vex is an open-source security research tool and bundles all five encoding variants generically — no special call-out of the reversed variant has been made publicly.
+This document is **not yet public** in the sense that I have not announced it on social media or written a blog post about it. The proof-of-concept attack and the reproduction recipe live in the public Vex repository (the `vex.jailbreak.encoding / reversed` probe), but Vex is an open-source security research tool and bundles all five encoding variants generically - no special call-out of the reversed variant has been made publicly.
 
 I am happy to delay any public write-up until Anthropic confirms the disposition.
 

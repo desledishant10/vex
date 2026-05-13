@@ -1,4 +1,4 @@
-"""Provider implementations — talk to actual model APIs.
+"""Provider implementations - talk to actual model APIs.
 
 Providers translate Vex's provider-agnostic :class:`Conversation` and
 :class:`Message` into the native schema of each model API. Each provider

@@ -1,4 +1,4 @@
-"""Shared test fixtures — most importantly, a deterministic mock provider."""
+"""Shared test fixtures - most importantly, a deterministic mock provider."""
 
 from __future__ import annotations
 
@@ -13,7 +13,7 @@ from vex.providers.base import Provider
 
 
 class MockProvider(Provider):
-    """Provider that returns scripted responses — no network calls.
+    """Provider that returns scripted responses - no network calls.
 
     Pass a ``responder`` callable that takes the conversation and returns
     the response text. If no responder is given, all responses are empty.

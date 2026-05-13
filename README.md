@@ -12,8 +12,8 @@ Vex is an open-source red team framework purpose-built for the agent era. While 
 pip install "vex[anthropic,openai,ollama]"
 export ANTHROPIC_API_KEY=sk-ant-...
 
-vex scan --target anthropic:claude-3-5-sonnet-20241022 \
-         --judge anthropic:claude-3-5-haiku-20241022 \
+vex scan --target anthropic:claude-sonnet-4-5-20250929 \
+         --judge anthropic:claude-haiku-4-5-20251001 \
          --output ./runs/baseline
 ```
 
@@ -70,7 +70,7 @@ $ vex list
 ### Scan a target
 
 ```bash
-$ vex scan --target anthropic:claude-3-5-sonnet-20241022
+$ vex scan --target anthropic:claude-sonnet-4-5-20250929
 ```
 
 ### Scan with a system prompt (test your actual deployed agent)
@@ -85,7 +85,7 @@ $ vex scan --target openai:gpt-4o \
 
 ```bash
 $ vex scan --target openai:gpt-4o \
-           --judge anthropic:claude-3-5-haiku-20241022
+           --judge anthropic:claude-haiku-4-5-20251001
 ```
 
 ### CI gating

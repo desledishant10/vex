@@ -80,8 +80,8 @@ If any of those are critical for your team, file an issue or send a PR — the c
 ```bash
 pip install "vex[anthropic]"
 export ANTHROPIC_API_KEY=...
-vex scan --target anthropic:claude-3-5-sonnet-20241022 \
-         --judge anthropic:claude-3-5-haiku-20241022 \
+vex scan --target anthropic:claude-sonnet-4-5-20250929 \
+         --judge anthropic:claude-haiku-4-5-20251001 \
          --output ./runs/first-scan
 open ./runs/first-scan/results.html
 ```

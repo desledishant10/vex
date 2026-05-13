@@ -35,7 +35,7 @@ async def main() -> None:
     target = Target(
         name="claude-sonnet-baseline",
         provider=AnthropicProvider(),
-        model="claude-3-5-sonnet-20241022",
+        model="claude-sonnet-4-5-20250929",
         system_prompt="You are a helpful, careful assistant.",
     )
 

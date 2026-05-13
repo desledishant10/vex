@@ -6,14 +6,14 @@ Usage examples::
     vex list
 
     # Scan an Anthropic target with default attacks
-    vex scan --target anthropic:claude-3-5-sonnet-20241022
+    vex scan --target anthropic:claude-sonnet-4-5-20250929
 
     # Scan a local Ollama model with category filter
     vex scan --target ollama:llama3.2 --category jailbreak,prompt_injection
 
     # Add LLM-judge detector using a cheap model
     vex scan --target openai:gpt-4o-mini \\
-             --judge anthropic:claude-3-5-haiku-20241022
+             --judge anthropic:claude-haiku-4-5-20251001
 
     # Persist HTML + JSON reports
     vex scan --target openai:gpt-4o --output ./runs/scan-001
@@ -86,7 +86,7 @@ def _parse_target(spec: str, *, system_prompt: Optional[str] = None) -> Target:
     if ":" not in spec:
         raise typer.BadParameter(
             f"Target must be in 'provider:model' form (got '{spec}'). "
-            "Example: anthropic:claude-3-5-sonnet-20241022"
+            "Example: anthropic:claude-sonnet-4-5-20250929"
         )
     provider_name, model = spec.split(":", 1)
     provider = _build_provider(provider_name)
@@ -145,7 +145,7 @@ def scan(
         ...,
         "--target",
         "-t",
-        help="Target spec in 'provider:model' form (e.g. 'anthropic:claude-3-5-sonnet-20241022').",
+        help="Target spec in 'provider:model' form (e.g. 'anthropic:claude-sonnet-4-5-20250929').",
     ),
     system_prompt: Optional[str] = typer.Option(
         None,
@@ -177,7 +177,7 @@ def scan(
     judge: Optional[str] = typer.Option(
         None,
         "--judge",
-        help="LLM-judge target spec (e.g. 'anthropic:claude-3-5-haiku-20241022').",
+        help="LLM-judge target spec (e.g. 'anthropic:claude-haiku-4-5-20251001').",
     ),
     judge_system_prompt: Optional[str] = typer.Option(
         None,

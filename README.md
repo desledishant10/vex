@@ -3,16 +3,21 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![CI](https://github.com/desledishant10/vex/actions/workflows/ci.yml/badge.svg)](https://github.com/desledishant10/vex/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/desledishant10/vex)](https://github.com/desledishant10/vex/releases)
 
 > Probe LLMs, agents, MCP servers, and RAG pipelines for safety failures and exploitable vulnerabilities — with a focus on what makes **agents** different from chatbots.
+
+<p align="center">
+  <img src="docs/assets/cli-demo.svg" alt="Vex scan against Claude Sonnet 4-6 — 18 probes, 1 real vulnerability, 17 safe, calibrated detector stack" width="900">
+</p>
 
 Vex is an open-source red team framework purpose-built for the agent era. While existing tools (Garak, PyRIT) excel at chatbot prompt attacks, Vex's threat model assumes the system under test reads attacker-controlled content from tools, documents, emails, webpages, and MCP servers — the realistic deployment surface for 2026-era AI products.
 
 ```bash
-pip install "vex[anthropic,openai,ollama]"
+pip install "vex[all]"
 export ANTHROPIC_API_KEY=sk-ant-...
 
-vex scan --target anthropic:claude-sonnet-4-5-20250929 \
+vex scan --target anthropic:claude-sonnet-4-6 \
          --judge anthropic:claude-haiku-4-5-20251001 \
          --output ./runs/baseline
 ```

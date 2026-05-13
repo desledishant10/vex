@@ -197,7 +197,7 @@ Re-run a saved `results.json` against a new target. Use cases:
 
 **Surface**
 ```
-vex replay ./runs/baseline/results.json --target anthropic:claude-3-7-sonnet
+vex replay ./runs/baseline/results.json --target anthropic:claude-sonnet-4-6
 ```
 
 Output is a new JSON + HTML report plus a diff report showing which probes

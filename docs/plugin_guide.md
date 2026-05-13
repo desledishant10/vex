@@ -44,7 +44,7 @@ from my_attacks.finance_pii import FinancePIIAttack
 target = Target(
     name="prod-agent",
     provider=AnthropicProvider(),
-    model="claude-3-5-sonnet-20241022",
+    model="claude-sonnet-4-5-20250929",
     system_prompt="...your real agent prompt...",
 )
 

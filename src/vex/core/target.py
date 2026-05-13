@@ -28,7 +28,7 @@ class Target(BaseModel):
     >>> target = Target(
     ...     name="claude-sonnet-prod",
     ...     provider=AnthropicProvider(),
-    ...     model="claude-3-5-sonnet-20241022",
+    ...     model="claude-sonnet-4-5-20250929",
     ...     system_prompt="You are a helpful customer support agent...",
     ... )
     """

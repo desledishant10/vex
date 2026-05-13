@@ -160,7 +160,7 @@ class ProbeResult(BaseModel):
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
     probe: Probe
-    target: str  # target identifier (e.g. "anthropic:claude-3-5-sonnet")
+    target: str  # target identifier (e.g. "anthropic:claude-sonnet-4-5")
     response: Optional[str] = None
     raw_response: Optional[dict[str, Any]] = None
     started_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))

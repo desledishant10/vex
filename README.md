@@ -42,19 +42,18 @@ If you're red-teaming an AI **product** rather than evaluating a base model, Vex
 
 ## Installation
 
-```bash
-# Base install
-pip install vex
+> **Heads up:** the base `pip install vex` does NOT pull provider SDKs, so you must install at least one provider extra to actually scan anything. Pick whatever you'll target.
 
-# With specific providers
+```bash
+# Everything (recommended for most users)
+pip install "vex[all]"
+
+# Or just the providers you'll use
 pip install "vex[anthropic]"
 pip install "vex[openai]"
 pip install "vex[ollama]"
 
-# Everything
-pip install "vex[all]"
-
-# Dev install
+# Dev install (clone + editable + all providers + test tooling)
 git clone https://github.com/desledishant10/vex.git
 cd vex
 pip install -e ".[dev,all]"

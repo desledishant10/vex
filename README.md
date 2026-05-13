@@ -214,3 +214,8 @@ If you use Vex in academic work:
     url = {https://github.com/desledishant10/vex},
 }
 ```
+
+
+## real-world target setup recipes
+
+Added per issue [#10](https://github.com/desledishant10/vex/issues/10).

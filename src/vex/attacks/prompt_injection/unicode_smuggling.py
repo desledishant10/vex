@@ -32,7 +32,7 @@ def _to_unicode_tags(text: str) -> str:
 
     Each ASCII char ``c`` is mapped to ``chr(0xE0000 + ord(c))``. Tag chars
     are invisible in most renderers but tokenize as their underlying glyph
-    in many LLM tokenizers — so the model "reads" the hidden message even
+    in many LLM tokenizers - so the model "reads" the hidden message even
     though a human reviewing the input sees nothing.
     """
     out_chars: list[str] = []

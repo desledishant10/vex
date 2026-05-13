@@ -3,7 +3,7 @@
 Many production agents include a substantial system prompt: brand voice
 rules, tool selection logic, escalation criteria, internal API names,
 sometimes credentials. The attacker's goal is to coerce the model into
-revealing this prompt — a high-value finding because it exposes the agent's
+revealing this prompt - a high-value finding because it exposes the agent's
 internal logic and accelerates further attacks.
 
 Modern frontier models actively defend against direct ("repeat your

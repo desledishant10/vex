@@ -6,7 +6,7 @@ Thanks for considering a contribution. Vex is a small, opinionated project; this
 
 - **Bug reports**: open an issue with a minimal reproduction. If you have an HTML/JSON report from a failed scan, attach it.
 - **New attacks**: open an issue first so we can confirm the attack fits the agent-first scope. Then PR per the recipe in [`docs/plugin_guide.md`](docs/plugin_guide.md).
-- **New providers**: similar — open an issue first to confirm scope and avoid duplicate work.
+- **New providers**: similar - open an issue first to confirm scope and avoid duplicate work.
 - **Detector improvements**: especially welcome if backed by real-model response examples. The v0.2 calibration release was driven entirely by captured baseline responses; that pattern scales well.
 
 Good first issues are labeled [`good first issue`](https://github.com/desledishant10/vex/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22). The current shortlist is in [`docs/ROADMAP.md`](docs/ROADMAP.md).
@@ -56,7 +56,7 @@ The minimum viable attack is ~30 lines. See the [plugin guide](docs/plugin_guide
 
 ## Adding a detector
 
-Detectors must be fast (target <100ms per probe) and side-effect-free (LLM-judge is the exception — explicit). The base contract is one method: `async def evaluate(self, probe, response) -> DetectorFinding`.
+Detectors must be fast (target <100ms per probe) and side-effect-free (LLM-judge is the exception - explicit). The base contract is one method: `async def evaluate(self, probe, response) -> DetectorFinding`.
 
 Calibration evidence is welcome. If you're adjusting refusal patterns or context-classification rules, link the responses that motivated the change.
 

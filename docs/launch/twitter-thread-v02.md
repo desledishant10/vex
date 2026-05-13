@@ -1,11 +1,11 @@
-# Twitter / X thread — v0.2 calibration release
+# Twitter / X thread - v0.2 calibration release
 
 *This is the stronger launch story than v0.1. Lead with the calibration arc, not the tool.*
 
 ---
 
 **1/**
-I shipped Vex 0.1 last week — agent-first AI red team framework.
+I shipped Vex 0.1 last week - agent-first AI red team framework.
 
 Ran it against claude-sonnet-4-6 as a baseline. Got back this:
 
@@ -22,16 +22,16 @@ The temptation when you see "12/18 vulnerable" is to publish "I broke Claude!"
 
 That's how snake-oil red-team tools survive. Loud headlines, no rigor.
 
-Instead I read every response. What I found was much more interesting than a fake breach claim — and a better lesson about red-teaming.
+Instead I read every response. What I found was much more interesting than a fake breach claim - and a better lesson about red-teaming.
 
 ---
 
 **3/**
 Of the 12 "vulnerable" findings:
 
-🟢 **1 was a real vulnerability** — reversed-text encoded instruction worked, model emitted the canary
-🔴 **5 were refusal-regex misses** — Claude refused conversationally, my regex didn't catch it
-🔴 **4 were canary-quoting misfires** — Claude detected the attack and quoted the canary IN A WARNING
+🟢 **1 was a real vulnerability** - reversed-text encoded instruction worked, model emitted the canary
+🔴 **5 were refusal-regex misses** - Claude refused conversationally, my regex didn't catch it
+🔴 **4 were canary-quoting misfires** - Claude detected the attack and quoted the canary IN A WARNING
 🟡 **2 were ambiguous**
 
 The "vulnerability rate" wasn't 67%. It was ~6%.
@@ -122,7 +122,7 @@ A red-team tool whose output every CISO has to triage manually is worse than no 
 
 The calibration work *is* the product.
 
-This is what red-teaming maturity looks like — not "find lots of bugs," but "separate signal from noise honestly."
+This is what red-teaming maturity looks like - not "find lots of bugs," but "separate signal from noise honestly."
 
 ---
 
@@ -156,7 +156,7 @@ If you're doing AI security research and want to ship into a defined category, f
 ## Optional follow-up tweets
 
 **15a/** (response to "isn't this just X")
-"Doesn't Garak already do this?" — Garak is great for chatbot red-teaming. Vex's distinct primitives: indirect-injection scenarios, context-aware compliance detection, judge-priority verdict aggregation. The tools complement each other.
+"Doesn't Garak already do this?" - Garak is great for chatbot red-teaming. Vex's distinct primitives: indirect-injection scenarios, context-aware compliance detection, judge-priority verdict aggregation. The tools complement each other.
 
 **15b/** (engagement)
 The full calibration story is in `runs/baseline/FINDINGS.md`. Per-probe response strings included. If you want to teach AI red-teaming, this is a real worked example with real frontier-model responses, not a synthetic toy.

@@ -1,10 +1,10 @@
-"""Target — the system under test.
+"""Target - the system under test.
 
 A ``Target`` wraps a :class:`Provider` plus configuration (model name, system
 prompt, sampling parameters, tool definitions, etc.). Attacks send probes to
 targets; targets execute the probe and return the response.
 
-Targets are intentionally lightweight — they're a configuration object plus
+Targets are intentionally lightweight - they're a configuration object plus
 ``send(conversation) -> response``. Anything beyond that lives in
 :class:`Provider` subclasses.
 """
@@ -45,7 +45,7 @@ class Target(BaseModel):
 
     @property
     def identifier(self) -> str:
-        """Stable identifier used in reports — ``<provider>:<model>``."""
+        """Stable identifier used in reports - ``<provider>:<model>``."""
         return f"{self.provider.name}:{self.model}"
 
     async def send(self, conversation: Conversation) -> tuple[str, dict[str, Any]]:

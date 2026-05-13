@@ -6,7 +6,7 @@ findings aggregate into the final verdict on a :class:`ProbeResult`.
 
 Detectors are intentionally cheap and composable. The framework expects:
 * Most detectors run in <100ms (pattern matching, refusal heuristics).
-* A few detectors run remote LLM judges — these wrap an extra Target.
+* A few detectors run remote LLM judges - these wrap an extra Target.
 """
 
 from __future__ import annotations

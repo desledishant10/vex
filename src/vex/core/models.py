@@ -7,7 +7,7 @@ into a :class:`ProbeResult`. Reports consume :class:`ProbeResult` collections.
 
 Design notes
 ------------
-* All models are Pydantic v2 — easy serialization to/from JSON for reports.
+* All models are Pydantic v2 - easy serialization to/from JSON for reports.
 * Models are intentionally provider-agnostic. A ``Message`` does not assume an
   OpenAI or Anthropic role schema; providers translate at the boundary.
 * ``Severity`` follows CVSS-ish semantics so users can map findings to existing
@@ -73,8 +73,8 @@ class AttackCategory(str, Enum):
 class Verdict(str, Enum):
     """Outcome of a single probe as judged by a detector."""
 
-    VULNERABLE = "vulnerable"  # attack succeeded — model produced unsafe output
-    SAFE = "safe"  # attack failed — model refused or behaved correctly
+    VULNERABLE = "vulnerable"  # attack succeeded - model produced unsafe output
+    SAFE = "safe"  # attack failed - model refused or behaved correctly
     INCONCLUSIVE = "inconclusive"  # detector could not determine outcome
     ERROR = "error"  # provider or transport error during the probe
 
@@ -82,7 +82,7 @@ class Verdict(str, Enum):
 class VerdictMode(str, Enum):
     """How to aggregate multiple detector findings into a single verdict.
 
-    * ``STRICTEST`` (v0.1 default): any VULNERABLE wins. Conservative — biases
+    * ``STRICTEST`` (v0.1 default): any VULNERABLE wins. Conservative - biases
       toward catching real attacks at the cost of false positives.
     * ``JUDGE_PRIORITY`` (v0.2+ default when judge present): if an
       ``LLMJudgeDetector`` finding exists with confidence ≥ 0.7, its verdict
@@ -103,7 +103,7 @@ class VerdictMode(str, Enum):
 
 
 class Message(BaseModel):
-    """A single conversation message — provider-agnostic.
+    """A single conversation message - provider-agnostic.
 
     Providers translate this into their native schema (OpenAI ``role``/``content``,
     Anthropic ``messages``, etc.) at the network boundary.
@@ -130,7 +130,7 @@ class Conversation(BaseModel):
 
 
 # ---------------------------------------------------------------------------
-# Probe — a single attack attempt
+# Probe - a single attack attempt
 # ---------------------------------------------------------------------------
 
 
@@ -157,7 +157,7 @@ class Probe(BaseModel):
 
 
 # ---------------------------------------------------------------------------
-# Probe result — what happened when a probe was run
+# Probe result - what happened when a probe was run
 # ---------------------------------------------------------------------------
 
 
@@ -196,7 +196,7 @@ class ProbeResult(BaseModel):
         """The aggregate verdict across all detectors, computed per ``verdict_mode``.
 
         Exposed as a Pydantic computed field so it appears in serialized JSON
-        reports — downstream consumers (SIEMs, vuln-management pipelines) get
+        reports - downstream consumers (SIEMs, vuln-management pipelines) get
         the verdict without recomputing it from the findings array.
         """
         if self.error:
@@ -247,12 +247,12 @@ class ProbeResult(BaseModel):
 
 
 # ---------------------------------------------------------------------------
-# Run summary — aggregate of many probe results
+# Run summary - aggregate of many probe results
 # ---------------------------------------------------------------------------
 
 
 class RunSummary(BaseModel):
-    """Aggregate of a scan run — what was tested, what failed."""
+    """Aggregate of a scan run - what was tested, what failed."""
 
     run_id: str = Field(default_factory=lambda: str(uuid4()))
     target: str

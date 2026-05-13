@@ -1,4 +1,4 @@
-"""Vex — agent-first red team framework for AI systems."""
+"""Vex - agent-first red team framework for AI systems."""
 
 from vex.core.attack import Attack
 from vex.core.detector import Detector

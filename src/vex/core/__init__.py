@@ -1,1 +1,1 @@
-"""Vex core — the framework primitives (models, base classes, orchestrator)."""
+"""Vex core - the framework primitives (models, base classes, orchestrator)."""

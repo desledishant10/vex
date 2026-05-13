@@ -1,4 +1,4 @@
-"""OpenAI provider — talks to GPT models via the official SDK.
+"""OpenAI provider - talks to GPT models via the official SDK.
 
 Installation::
 

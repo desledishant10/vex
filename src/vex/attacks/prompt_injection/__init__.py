@@ -1,1 +1,1 @@
-"""Prompt-injection attacks — adversarial inputs that hijack instructions."""
+"""Prompt-injection attacks - adversarial inputs that hijack instructions."""

@@ -1,4 +1,4 @@
-"""Anthropic provider — talks to Claude via the official SDK.
+"""Anthropic provider - talks to Claude via the official SDK.
 
 Installation::
 
@@ -64,7 +64,7 @@ class AnthropicProvider(Provider):
                     system = msg.content
                 continue
             if msg.role == Role.TOOL:
-                # Tool messages are not modeled in v0.1 — placeholder.
+                # Tool messages are not modeled in v0.1 - placeholder.
                 continue
             messages.append({"role": msg.role.value, "content": msg.content})
 

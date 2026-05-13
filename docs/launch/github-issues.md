@@ -7,7 +7,7 @@ for a new OSS repo.
 
 ---
 
-## Issue 1 — MCP server target adapter
+## Issue 1 - MCP server target adapter
 
 **Title:** Add MCP server target adapter
 
@@ -37,7 +37,7 @@ server directly rather than through an LLM target.
 
 ---
 
-## Issue 2 — Browser-agent attack module
+## Issue 2 - Browser-agent attack module
 
 **Title:** Browser-agent attack module (Computer Use / Operator / Mariner)
 
@@ -50,10 +50,10 @@ Replit Agent, Devin, Anthropic Claude in Chrome) launched in 2024-2025 with
 largely unstudied threat models.
 
 **Probes to ship**
-1. Visual injection — text-in-image instructions that multimodal models read
+1. Visual injection - text-in-image instructions that multimodal models read
    but humans don't notice
-2. Cross-tab hijacking — malicious page on tab A influencing actions on tab B
-3. Tricked-action CSRF-equivalents — agent performs unintended state changes
+2. Cross-tab hijacking - malicious page on tab A influencing actions on tab B
+3. Tricked-action CSRF-equivalents - agent performs unintended state changes
 4. Cookie/session theft scenarios
 5. Hidden-element injection (`display:none`, `aria-hidden`, off-screen)
 
@@ -64,7 +64,7 @@ gives realism, transport-level gives reproducibility.
 
 ---
 
-## Issue 3 — Multi-turn crescendo attack family
+## Issue 3 - Multi-turn crescendo attack family
 
 **Title:** Multi-turn crescendo attacks
 
@@ -82,14 +82,14 @@ several turns of plausible-looking conversation.
 - Goal redirection (start with task A, gradually morph to task B)
 
 **Framework changes needed**
-- `Attack.generate()` already supports multi-turn `Conversation` — but the
+- `Attack.generate()` already supports multi-turn `Conversation` - but the
   orchestrator needs a way to receive intermediate target responses and feed
   them into subsequent turns, possibly via an `Attack.next_turn(history)` hook
 - Multi-turn detectors need conversation context, not just final response
 
 ---
 
-## Issue 4 — Cross-session memory poisoning probes
+## Issue 4 - Cross-session memory poisoning probes
 
 **Title:** Memory poisoning probes (Mem0 / Letta / vector DBs)
 
@@ -112,7 +112,7 @@ Persistent memory is the new attack surface for agents. Probes should cover:
 
 ---
 
-## Issue 5 — Entry-point plugin discovery
+## Issue 5 - Entry-point plugin discovery
 
 **Title:** Entry-point-based plugin discovery via `vex.attacks` group
 
@@ -130,12 +130,12 @@ package can register attacks for `vex list` and `vex scan` automatically.
 - `vex list` shows source (built-in vs. plugin) for each attack
 - Doc update in `plugin_guide.md`
 
-This is a great first contribution — straightforward, well-scoped, touches
+This is a great first contribution - straightforward, well-scoped, touches
 infrastructure most contributors don't see.
 
 ---
 
-## Issue 6 — Reproducibility seeds
+## Issue 6 - Reproducibility seeds
 
 **Title:** Add `--seed` for reproducible runs
 
@@ -157,7 +157,7 @@ reproducibility. Add:
 
 ---
 
-## Issue 7 — Additional refusal patterns for non-English models
+## Issue 7 - Additional refusal patterns for non-English models
 
 **Title:** Refusal patterns: extend to non-English models
 
@@ -179,9 +179,9 @@ PR-able as a single file change in `src/vex/detectors/refusal.py`.
 
 ---
 
-## Issue 8 — Vex Replay: replay saved scans against a new target
+## Issue 8 - Vex Replay: replay saved scans against a new target
 
-**Title:** `vex replay` — replay a saved scan against a new target
+**Title:** `vex replay` - replay a saved scan against a new target
 
 **Labels:** [enhancement] [v0.3]
 
@@ -191,7 +191,7 @@ Re-run a saved `results.json` against a new target. Use cases:
 
 - Regression testing across model versions (Claude 3.5 vs 4)
 - Before/after patch testing
-- Credible CVE disclosure — the patch reviewer reproduces your finding
+- Credible CVE disclosure - the patch reviewer reproduces your finding
   exactly from your published report
 - A/B testing system-prompt changes
 
@@ -205,7 +205,7 @@ changed verdict.
 
 ---
 
-## Issue 9 — Add OpenAI Responses / Realtime API support
+## Issue 9 - Add OpenAI Responses / Realtime API support
 
 **Title:** OpenAI Realtime + Responses API providers
 
@@ -223,7 +223,7 @@ real production deployments are moving to. Add:
 
 ---
 
-## Issue 10 — Documentation: real-world target setup recipes
+## Issue 10 - Documentation: real-world target setup recipes
 
 **Title:** Docs: real-world target setup recipes
 

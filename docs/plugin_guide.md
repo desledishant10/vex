@@ -1,12 +1,12 @@
 # Writing Vex plugins
 
 Vex's extension points (Attack, Detector, Provider) are designed to be reached
-from outside the main repo — for proprietary internal attacks, organization-
+from outside the main repo - for proprietary internal attacks, organization-
 specific compliance checks, or new providers.
 
 ## Quick recipes
 
-### Custom attack — single file
+### Custom attack - single file
 
 ```python
 # my_attacks/finance_pii.py

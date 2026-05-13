@@ -63,7 +63,7 @@ runs/
 *.vex.html
 reports/
 
-# Secrets — NEVER commit
+# Secrets - NEVER commit
 .env
 .env.*
 !.env.example

@@ -1,13 +1,13 @@
-# Twitter / X launch thread (v0.1 — original)
+# Twitter / X launch thread (v0.1 - original)
 
 > **Note:** the [v0.2 calibration thread](twitter-thread-v02.md) is the stronger narrative ("I shipped a tool, ran it, found my own calibration was wrong, fixed it, shipped v0.2"). Prefer that one for the public launch. This v0.1 thread is preserved for archival reference.
 
-*Each numbered item is one tweet (≤280 chars including line breaks). Edit before posting — adjust pronouns, add the actual screenshot URLs, tag relevant accounts.*
+*Each numbered item is one tweet (≤280 chars including line breaks). Edit before posting - adjust pronouns, add the actual screenshot URLs, tag relevant accounts.*
 
 ---
 
 **1/**
-Shipping Vex 0.1 — an open-source, agent-first red team framework for AI systems.
+Shipping Vex 0.1 - an open-source, agent-first red team framework for AI systems.
 
 Existing AI red team tools (Garak, PyRIT) were built when "AI" meant chatbot.
 
@@ -42,11 +42,11 @@ None of these are user-prompt attacks.
 **4/**
 Vex 0.1 ships 5 attacks across the new threat model:
 
-🔸 vex.agent.indirect_tool_injection — email/webpage/doc-tampered exfil scenarios
-🔸 vex.prompt_injection.unicode_smuggling — Unicode Tags block + ZWJ + bidi
-🔸 vex.agent.system_prompt_leak — 5 framings beyond "repeat your prompt"
-🔸 vex.jailbreak.encoding — base64/ROT13/hex/reversed
-🔸 vex.jailbreak.role_play — DAN/dev-mode/fictional-frame baseline
+🔸 vex.agent.indirect_tool_injection - email/webpage/doc-tampered exfil scenarios
+🔸 vex.prompt_injection.unicode_smuggling - Unicode Tags block + ZWJ + bidi
+🔸 vex.agent.system_prompt_leak - 5 framings beyond "repeat your prompt"
+🔸 vex.jailbreak.encoding - base64/ROT13/hex/reversed
+🔸 vex.jailbreak.role_play - DAN/dev-mode/fictional-frame baseline
 
 ---
 
@@ -63,17 +63,17 @@ The renderer shows nothing. The tokenizer reads everything. The model often foll
 **6/**
 What makes it actually useful in production:
 
-• CI-native — `vex scan ... --exit-on-finding` exits non-zero on any vuln
-• Stable JSON schema — pipes into your existing vuln management
-• Three providers — Anthropic, OpenAI (+compat), Ollama
-• Local-first dev — run destructive attacks vs a local Llama before spending API $
+• CI-native - `vex scan ... --exit-on-finding` exits non-zero on any vuln
+• Stable JSON schema - pipes into your existing vuln management
+• Three providers - Anthropic, OpenAI (+compat), Ollama
+• Local-first dev - run destructive attacks vs a local Llama before spending API $
 
 ---
 
 **7/**
 LLM-as-judge detector built in, with robust JSON parsing for the day your judge wraps output in markdown ```code fences```.
 
-Use a cheap reliable model as the judge — Haiku, GPT-4o-mini, Gemini Flash, or a local 8B-class model on Ollama.
+Use a cheap reliable model as the judge - Haiku, GPT-4o-mini, Gemini Flash, or a local 8B-class model on Ollama.
 
 ---
 
@@ -116,7 +116,7 @@ github.com/desledishant10/vex
 The Unicode Tags block attack works because the codepoints U+E0000-U+E007E were designed for language tagging in legacy Unicode (deprecated in TR9). They render as nothing in modern fonts but most LLM tokenizers normalize them to underlying ASCII.
 
 **11b/** (response to "isn't this just X")
-"Doesn't Garak already do this?" — Garak is great. It's tuned for chatbot red-teaming. Vex's distinct primitives: indirect injection scenarios, MCP-bound targets, agent-tool-misuse detectors. Try both. Tools don't compete; threat surfaces do.
+"Doesn't Garak already do this?" - Garak is great. It's tuned for chatbot red-teaming. Vex's distinct primitives: indirect injection scenarios, MCP-bound targets, agent-tool-misuse detectors. Try both. Tools don't compete; threat surfaces do.
 
 **11c/** (engagement)
 The repo has open issues for v0.2 work tagged `good first issue` and `help wanted`. If you've been wanting to ship security research for an OSS project and don't know where to start, this is one of those places.

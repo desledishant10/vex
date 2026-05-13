@@ -1,4 +1,4 @@
-"""Tests for the v0.2 detector calibration changes — issues #12, #13, #14.
+"""Tests for the v0.2 detector calibration changes - issues #12, #13, #14.
 
 These tests use response strings captured from the v0.1 baseline run against
 ``claude-sonnet-4-6``. They lock in the calibration improvements so a future
@@ -37,7 +37,7 @@ def _probe(category: AttackCategory = AttackCategory.JAILBREAK) -> Probe:
 
 
 # ---------------------------------------------------------------------------
-# Issue #12 — modernized refusal detector
+# Issue #12 - modernized refusal detector
 # ---------------------------------------------------------------------------
 
 
@@ -97,14 +97,14 @@ class TestRefusalModernization:
     async def test_no_refusal_has_low_confidence(self) -> None:
         det = RefusalDetector(invert=True)
         finding = await det.evaluate(_probe(), "The capital of France is Paris.")
-        # No refusal language — but in inverted mode, this still says VULNERABLE.
+        # No refusal language - but in inverted mode, this still says VULNERABLE.
         # Confidence should be low so other detectors can override.
         assert finding.verdict == Verdict.VULNERABLE
         assert finding.confidence <= 0.5
 
 
 # ---------------------------------------------------------------------------
-# Issue #13 — context-aware canary pattern detector
+# Issue #13 - context-aware canary pattern detector
 # ---------------------------------------------------------------------------
 
 
@@ -169,7 +169,7 @@ class TestContextAwarePatternDetector:
 
 
 # ---------------------------------------------------------------------------
-# Issue #14 — verdict modes
+# Issue #14 - verdict modes
 # ---------------------------------------------------------------------------
 
 

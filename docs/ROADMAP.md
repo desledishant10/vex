@@ -4,7 +4,7 @@ This document tracks the planned evolution of Vex. Items reflect the team's
 current intent, not commitments. Pull requests aligned with these directions
 are especially welcome.
 
-## v0.2 — Agent surface coverage (target: ~6-8 weeks post-0.1)
+## v0.2 - Agent surface coverage (target: ~6-8 weeks post-0.1)
 
 The 0.1 release establishes the framework. 0.2 fills in the attack surfaces
 that motivated the project but were too large for the first cut.
@@ -23,7 +23,7 @@ a target at an MCP server (stdio or HTTP transport) and probe:
 ### Browser-agent attack module
 
 Claude Computer Use, OpenAI Operator, Google Mariner, Anthropic Claude in
-Chrome, Replit Agent, Devin — the browser-using agent category is the most
+Chrome, Replit Agent, Devin - the browser-using agent category is the most
 under-tested surface in production AI today. Vex 0.2 will ship:
 
 - Visual injection (text-in-image instructions that the multimodal model
@@ -68,7 +68,7 @@ Stochastic attacks (anything that uses LLM-generated variants) need explicit
 seed control for regression-grade reproducibility. Adding `--seed` to the
 CLI and `seed` arg to `Orchestrator.run()`.
 
-## v0.3 — Discovery + scale (target: ~3-4 months post-0.1)
+## v0.3 - Discovery + scale (target: ~3-4 months post-0.1)
 
 ### Automated jailbreak discovery
 
@@ -82,7 +82,7 @@ but adapted to a tool that ships and runs on a laptop.
 ### Training-data extraction
 
 Probes that try to extract memorized training data. Distinct from
-system-prompt leak — this targets the pretraining corpus.
+system-prompt leak - this targets the pretraining corpus.
 
 ### Model fingerprinting attack family
 
@@ -98,16 +98,16 @@ Optional FastAPI + HTMX UI for non-CLI workflows:
 - Run comparison (target A vs target B, or version-over-version)
 - Embeddable iframe for status pages
 
-Stays optional — CLI remains primary.
+Stays optional - CLI remains primary.
 
 ### Replay tool
 
-`vex replay results.json` — re-run a saved scan against a new target.
+`vex replay results.json` - re-run a saved scan against a new target.
 Useful for: regression testing across model versions, before/after
 patch testing, and credible CVE disclosure (the patch reviewer can
 reproduce your finding exactly).
 
-## v1.0 — Production-grade (target: ~9-12 months post-0.1)
+## v1.0 - Production-grade (target: ~9-12 months post-0.1)
 
 ### Stable plugin API
 
@@ -134,7 +134,7 @@ Paid tier: unlimited probes, scheduled scans, historical trend analysis,
 SLA on attack-pack updates.
 
 This is the commercial layer. The OSS framework remains the same product
-under the hood — paid customers run the same binary.
+under the hood - paid customers run the same binary.
 
 ## Non-goals (clarifying what Vex will NOT become)
 
@@ -150,10 +150,10 @@ under the hood — paid customers run the same binary.
 
 Easiest contributions in order of value to the project:
 
-1. **New attacks** in the agent-attack category — especially MCP-targeting probes
+1. **New attacks** in the agent-attack category - especially MCP-targeting probes
 2. **Provider implementations** for niche endpoints (vertex.ai, Bedrock, Together full coverage)
-3. **Detector improvements** — better refusal patterns across languages, smarter compliance heuristics
-4. **Documentation** — every "I tried to install/use this and it didn't work because…" is a high-value issue
-5. **Real-world findings** — disclose responsibly through vendor bounty programs, then PR the corresponding canary-payload probe back to Vex
+3. **Detector improvements** - better refusal patterns across languages, smarter compliance heuristics
+4. **Documentation** - every "I tried to install/use this and it didn't work because…" is a high-value issue
+5. **Real-world findings** - disclose responsibly through vendor bounty programs, then PR the corresponding canary-payload probe back to Vex
 
 See `CONTRIBUTING.md` (forthcoming) for the workflow.

@@ -1,7 +1,7 @@
 """Render a Vex run's terminal report to an SVG for embedding in docs/README.
 
 Uses Rich's recording mode to capture the same terminal output `vex scan`
-produces — but as a static SVG that renders identically on every viewer.
+produces - but as a static SVG that renders identically on every viewer.
 
 Usage::
 

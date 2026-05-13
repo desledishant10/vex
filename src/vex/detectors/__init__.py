@@ -1,4 +1,4 @@
-"""Detectors — judge whether an attack response indicates a successful attack."""
+"""Detectors - judge whether an attack response indicates a successful attack."""
 
 from vex.detectors.compliance import ComplianceDetector
 from vex.detectors.llm_judge import LLMJudgeDetector

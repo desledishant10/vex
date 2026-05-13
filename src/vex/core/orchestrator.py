@@ -23,6 +23,7 @@ from vex.core.models import (
     ProbeResult,
     RunSummary,
     Verdict,
+    VerdictMode,
 )
 from vex.core.target import Target
 
@@ -55,11 +56,20 @@ class Orchestrator:
         detectors: Iterable[Detector],
         concurrency: int = 8,
         on_progress: Optional[ProgressCallback] = None,
+        verdict_mode: Optional[VerdictMode] = None,
     ) -> None:
         self.target = target
         self.detectors: list[Detector] = list(detectors)
         self.concurrency = max(1, concurrency)
         self.on_progress = on_progress
+        # Default verdict mode: JUDGE_PRIORITY if a judge-style detector is
+        # present, else STRICTEST. Explicit override always wins.
+        if verdict_mode is not None:
+            self.verdict_mode = verdict_mode
+        elif any("judge" in getattr(d, "name", "").lower() for d in self.detectors):
+            self.verdict_mode = VerdictMode.JUDGE_PRIORITY
+        else:
+            self.verdict_mode = VerdictMode.STRICTEST
 
     async def run(self, attacks: Iterable[Attack]) -> RunSummary:
         """Run ``attacks`` against the target. Returns the aggregated summary."""
@@ -122,7 +132,11 @@ class Orchestrator:
             yield from attack.generate()
 
     async def _execute_probe(self, probe: Probe) -> ProbeResult:
-        result = ProbeResult(probe=probe, target=self.target.identifier)
+        result = ProbeResult(
+            probe=probe,
+            target=self.target.identifier,
+            verdict_mode=self.verdict_mode,
+        )
 
         try:
             text, raw = await self.target.send(probe.conversation)

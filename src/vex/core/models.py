@@ -21,7 +21,7 @@ from enum import Enum
 from typing import Any, Optional
 from uuid import uuid4
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, computed_field
 
 
 # ---------------------------------------------------------------------------
@@ -169,11 +169,16 @@ class ProbeResult(BaseModel):
     error: Optional[str] = None
     findings: list[DetectorFinding] = Field(default_factory=list)
 
+    @computed_field  # type: ignore[prop-decorator]
     @property
     def verdict(self) -> Verdict:
         """The aggregate verdict across all detectors.
 
         Logic: any VULNERABLE wins; else any ERROR; else any INCONCLUSIVE; else SAFE.
+
+        Exposed as a Pydantic computed field so it appears in serialized JSON
+        reports — downstream consumers (SIEMs, vuln-management pipelines) get
+        the verdict without recomputing it from the findings array.
         """
         if self.error:
             return Verdict.ERROR
@@ -187,6 +192,16 @@ class ProbeResult(BaseModel):
         if Verdict.INCONCLUSIVE in verdicts:
             return Verdict.INCONCLUSIVE
         return Verdict.SAFE
+
+    @computed_field  # type: ignore[prop-decorator]
+    @property
+    def detector_agreement(self) -> int:
+        """Count of detectors that returned VULNERABLE for this probe.
+
+        Useful for prioritization: a finding flagged by 3 detectors is far
+        higher-confidence than one flagged by a single regex detector.
+        """
+        return sum(1 for f in self.findings if f.verdict == Verdict.VULNERABLE)
 
     @property
     def is_vulnerable(self) -> bool:

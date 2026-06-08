@@ -1,10 +1,10 @@
 # Disclosure: Reversed-Text Encoded Instruction Bypass - Claude Sonnet 4-6
 
-**Status:** Submitted 2026-05-20 to `usersafety@anthropic.com`
+**Status:** Submitted 2026-06-07 to `usersafety@anthropic.com`
 **Reporter:** Dishant Desle (@desledishant10)
 **Date drafted:** 2026-05-13
-**Date submitted:** 2026-05-20
-**Channel:** `usersafety@anthropic.com` (per Anthropic Responsible Disclosure Policy — jailbreak / model safety channel)
+**Date submitted:** 2026-06-07
+**Channel:** `usersafety@anthropic.com` (per Anthropic Responsible Disclosure Policy - jailbreak / model safety channel). Initial send used Gmail Confidential Mode which prevented internal forwarding; resent in standard mode the same day.
 **Target:** `anthropic:claude-sonnet-4-6` (via Anthropic Messages API)
 **Severity assessment:** Low (proof-of-concept; benign canary payload)
 **Discovery method:** [Vex](https://github.com/desledishant10/vex) v0.2.0 baseline run
@@ -93,8 +93,8 @@ Vex run that produced this finding:
 |---|---|
 | 2026-05-13 | Finding discovered during Vex v0.2.0 baseline run |
 | 2026-05-13 | Disclosure drafted (this document) |
-| 2026-05-20 | Reported to Anthropic via `usersafety@anthropic.com` |
-| TBD | Acknowledgement received (expected within 3 business days per policy) |
+| 2026-06-07 | Reported to Anthropic via `usersafety@anthropic.com` (sent twice the same day: initial in Gmail Confidential Mode, then resent in standard mode after realizing Confidential Mode blocks internal forwarding) |
+| TBD | Acknowledgement received (expected by EOD Wed 2026-06-10 per 3-business-day policy SLA) |
 | TBD | Triage/disposition |
 | TBD | Public disclosure (after Anthropic provides written notice per their policy) |
 

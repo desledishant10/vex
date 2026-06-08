@@ -1,8 +1,10 @@
 # Disclosure: Reversed-Text Encoded Instruction Bypass - Claude Sonnet 4-6
 
-**Status:** Draft - to be submitted via Anthropic's HackerOne program / `safety@anthropic.com`
+**Status:** Submitted 2026-05-20 to `usersafety@anthropic.com`
 **Reporter:** Dishant Desle (@desledishant10)
 **Date drafted:** 2026-05-13
+**Date submitted:** 2026-05-20
+**Channel:** `usersafety@anthropic.com` (per Anthropic Responsible Disclosure Policy — jailbreak / model safety channel)
 **Target:** `anthropic:claude-sonnet-4-6` (via Anthropic Messages API)
 **Severity assessment:** Low (proof-of-concept; benign canary payload)
 **Discovery method:** [Vex](https://github.com/desledishant10/vex) v0.2.0 baseline run
@@ -91,10 +93,10 @@ Vex run that produced this finding:
 |---|---|
 | 2026-05-13 | Finding discovered during Vex v0.2.0 baseline run |
 | 2026-05-13 | Disclosure drafted (this document) |
-| TBD | Reported to Anthropic via HackerOne |
-| TBD | Acknowledgement received |
+| 2026-05-20 | Reported to Anthropic via `usersafety@anthropic.com` |
+| TBD | Acknowledgement received (expected within 3 business days per policy) |
 | TBD | Triage/disposition |
-| TBD | Public disclosure (90 days after report, or sooner if acknowledged/fixed and Anthropic consents) |
+| TBD | Public disclosure (after Anthropic provides written notice per their policy) |
 
 ## Disclosure scope
 

@@ -56,12 +56,15 @@ dmypy.json
 *.swo
 .DS_Store
 
-# Vex output
+# Vex output (scan results). Anchored to the repo root so these rules don't
+# shadow the source package src/vex/reports/ or the committed baseline runs.
 .vex/
-runs/
+/runs/*
+!/runs/baseline/
+!/runs/baseline-v02/
 *.vex.json
 *.vex.html
-reports/
+/reports/
 
 # Secrets - NEVER commit
 .env

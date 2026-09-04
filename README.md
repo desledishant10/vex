@@ -4,17 +4,22 @@
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![CI](https://github.com/desledishant10/vex/actions/workflows/ci.yml/badge.svg)](https://github.com/desledishant10/vex/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/desledishant10/vex)](https://github.com/desledishant10/vex/releases)
+[![PyPI](https://img.shields.io/pypi/v/vexscan)](https://pypi.org/project/vexscan/)
 
-> Probe LLMs, agents, MCP servers, and RAG pipelines for safety failures and exploitable vulnerabilities - with a focus on what makes **agents** different from chatbots.
+> Probe LLMs and tool-using agents for safety failures and prompt-injection vulnerabilities - with a focus on what makes **agents** different from chatbots.
+
+> **Package name:** the tool is `vex`, but the PyPI distribution is [`vexscan`](https://pypi.org/project/vexscan/) (the name `vex` was already taken). Install `vexscan`; the import package and CLI command are still `vex`.
 
 <p align="center">
   <img src="docs/assets/cli-demo.svg" alt="Vex scan against Claude Sonnet 4-6 - 18 probes, 1 real vulnerability, 17 safe, calibrated detector stack" width="900">
 </p>
 
-Vex is an open-source red team framework purpose-built for the agent era. While existing tools (Garak, PyRIT) excel at chatbot prompt attacks, Vex's threat model assumes the system under test reads attacker-controlled content from tools, documents, emails, webpages, and MCP servers - the realistic deployment surface for 2026-era AI products.
+Vex is an open-source red team framework purpose-built for the agent era. While existing tools (Garak, PyRIT) excel at chatbot prompt attacks, Vex's threat model assumes the system under test reads attacker-controlled content from tools, documents, emails, and webpages - the realistic deployment surface for 2026-era AI products.
+
+**What ships today:** target adapters for chat-completion APIs (Anthropic, OpenAI + OpenAI-compatible, Ollama) and an attack library focused on agent-context prompt injection - indirect tool injection, encoded jailbreaks, Unicode smuggling, system-prompt leak, and role-play coercion. Dedicated MCP-server, RAG, browser-agent, and memory-poisoning targets are on the [roadmap](docs/ROADMAP.md), not yet shipped.
 
 ```bash
-pip install "vex[all]"
+pip install "vexscan[all]"
 export ANTHROPIC_API_KEY=sk-ant-...
 
 vex scan --target anthropic:claude-sonnet-4-6 \
@@ -27,9 +32,9 @@ vex scan --target anthropic:claude-sonnet-4-6 \
 | | Chatbot red team (Garak, PyRIT) | Vex |
 |--|--|--|
 | Primary threat model | User-supplied adversarial prompts | Attacker plants content the agent reads |
-| Probe shape | Single-turn user message | User task + planted untrusted content + tool surface |
-| Attack categories | Jailbreaks, harmful content | Indirect injection, tool hijack, system prompt leak, memory poisoning, Unicode smuggling |
-| Targets | Chat models | Chat + agents + MCP servers + RAG pipelines |
+| Probe shape | Single-turn user message | User task + planted untrusted content |
+| Attack categories | Jailbreaks, harmful content | Indirect injection, encoded jailbreaks, system-prompt leak, Unicode smuggling, role-play coercion |
+| Targets | Chat models | Chat-completion APIs, tested for agent-context injection (MCP / RAG targets on the roadmap) |
 | Detector model | Refusal / pattern | Refusal + pattern + compliance + LLM judge |
 | CI-native | Partial | First-class - `--exit-on-finding` and stable JSON schema |
 
@@ -39,24 +44,24 @@ If you're red-teaming an AI **product** rather than evaluating a base model, Vex
 
 - **Agent-first attack library** - indirect tool injection, system prompt extraction, Unicode smuggling, encoded jailbreaks, role-play coercion. Designed for the modern attack surface.
 - **Multi-provider** - Anthropic, OpenAI, OpenAI-compatible (Groq, Together, OpenRouter, vLLM), Ollama. Add your own in ~40 lines.
-- **Composable detectors** - refusal, pattern, compliance, LLM-as-judge. Mix and match per probe.
-- **Reproducible runs** - every probe is deterministic given the same seed and target config; raw responses persist for forensic replay.
-- **CI-native** - single binary, JSON schema with stability guarantees, `--exit-on-finding` flag for build gating.
+- **Composable detectors** - refusal, pattern, compliance, LLM-as-judge, with three verdict-aggregation modes (`strictest`, `judge_priority`, `majority_vote`). Mix and match per probe.
+- **Forensic replay** - every raw model response is persisted to disk so findings can be re-examined and re-scored. (Seeded, fully-reproducible probe generation is [planned](docs/ROADMAP.md), tracked in issue #6.)
+- **CI-native** - stable JSON schema and an `--exit-on-finding` gate for build gating (exits non-zero on a finding, and on a run where every probe errored).
 - **Rich reports** - terminal summary, single-file HTML, machine-readable JSON.
 - **Extensible** - write a new attack in ~30 lines, a new detector in ~20, a new provider in ~50.
 
 ## Installation
 
-> **Heads up:** the base `pip install vex` does NOT pull provider SDKs, so you must install at least one provider extra to actually scan anything. Pick whatever you'll target.
+> **Heads up:** the base `pip install vexscan` does NOT pull provider SDKs, so you must install at least one provider extra to actually scan anything. Pick whatever you'll target.
 
 ```bash
 # Everything (recommended for most users)
-pip install "vex[all]"
+pip install "vexscan[all]"
 
 # Or just the providers you'll use
-pip install "vex[anthropic]"
-pip install "vex[openai]"
-pip install "vex[ollama]"
+pip install "vexscan[anthropic]"
+pip install "vexscan[openai]"
+pip install "vexscan[ollama]"
 
 # Dev install (clone + editable + all providers + test tooling)
 git clone https://github.com/desledishant10/vex.git
@@ -92,6 +97,27 @@ $ vex scan --target openai:gpt-4o \
 $ vex scan --target openai:gpt-4o \
            --judge anthropic:claude-haiku-4-5-20251001
 ```
+
+### Choose how detector verdicts are aggregated
+
+Each probe is scored by several detectors; `--verdict-mode` controls how their
+findings combine into one verdict. This is the v0.2 calibration knob.
+
+```bash
+# judge-priority (default when --judge is set): the LLM judge is authoritative
+# at confidence >= 0.7, falling back to strictest otherwise
+$ vex scan -t openai:gpt-4o --judge anthropic:claude-haiku-4-5-20251001 \
+           --verdict-mode judge_priority
+
+# strictest (default with no judge): any VULNERABLE detector wins
+# majority-vote: confidence-weighted vote across all detectors
+$ vex scan -t openai:gpt-4o --verdict-mode majority_vote
+```
+
+> **Note:** without `--judge`, the default `strictest` stack is intentionally
+> conservative and will not mark a clean refusal as `SAFE` on its own. For
+> calibrated verdicts against a frontier model, run with `--judge` (as the
+> baseline below does).
 
 ### CI gating
 

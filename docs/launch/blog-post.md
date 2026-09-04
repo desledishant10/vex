@@ -78,7 +78,7 @@ If any of those are critical for your team, file an issue or send a PR - the con
 ## Try it
 
 ```bash
-pip install "vex[anthropic]"
+pip install "vexscan[anthropic]"
 export ANTHROPIC_API_KEY=...
 vex scan --target anthropic:claude-sonnet-4-5-20250929 \
          --judge anthropic:claude-haiku-4-5-20251001 \

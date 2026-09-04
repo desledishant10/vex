@@ -3,9 +3,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "vex"
+name = "vexscan"
 version = "0.2.0"
-description = "Agent-first red team framework for AI systems - probe LLMs, agents, MCP servers, and RAG pipelines for safety failures and exploitable vulnerabilities."
+description = "Agent-first red team framework for AI systems - probe LLMs and tool-using agents for safety failures and prompt-injection vulnerabilities."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "Apache-2.0" }
@@ -48,12 +48,10 @@ dependencies = [
 [project.optional-dependencies]
 anthropic = ["anthropic>=0.40,<1"]
 openai = ["openai>=1.40,<2"]
-google = ["google-generativeai>=0.7,<1"]
 ollama = ["ollama>=0.3,<1"]
 all = [
     "anthropic>=0.40,<1",
     "openai>=1.40,<2",
-    "google-generativeai>=0.7,<1",
     "ollama>=0.3,<1",
 ]
 dev = [

@@ -5,9 +5,11 @@ typically override :meth:`Attack.generate` and may declare per-class metadata
 (``id``, ``category``, ``severity``).
 
 Attacks are deliberately stateless - the same Attack instance generates the
-same probes when invoked twice with the same seed. This makes runs
-reproducible, which matters for both regression testing of model safety and
-for credible vulnerability disclosure.
+same probe *content* (titles, payloads, conversations) every time it is
+invoked. Note that each :class:`Probe` is still stamped with a fresh random
+``id`` per generation; seeded, byte-for-byte reproducible generation is
+planned (issue #6). Every raw provider response is retained for forensic
+replay, which is what matters for regression testing and credible disclosure.
 """
 
 from __future__ import annotations

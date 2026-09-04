@@ -9,9 +9,11 @@ the framework's positioning vs. alternatives.
 1. **Agent-first threat model.** Vex assumes the system under test ingests
    content the attacker can influence - emails, documents, RAG sources, tool
    outputs, MCP server responses. Probes are shaped accordingly.
-2. **Reproducible probes.** Given the same configuration, the same attack
-   produces the same probes in the same order. Raw provider responses are
-   retained on every result for forensic replay.
+2. **Stable probe content, forensic replay.** Given the same configuration, the
+   same attack produces the same probe *content* in the same order (each probe
+   is still stamped with a fresh random `id`; seeded byte-for-byte
+   reproducibility is planned - issue #6). Raw provider responses are retained
+   on every result for forensic replay.
 3. **Provider-agnostic core.** The framework speaks in `Conversation` and
    `Message`. Providers translate at the network boundary. Adding a new
    provider is ~50 lines.

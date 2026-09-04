@@ -205,7 +205,10 @@ def scan(
     exit_on_finding: bool = typer.Option(
         False,
         "--exit-on-finding",
-        help="Exit with non-zero status if any VULNERABLE probe is found (CI-friendly).",
+        help=(
+            "CI gate: exit 1 if any VULNERABLE probe is found, or exit 3 if "
+            "every probe errored (target never scanned). Exit 0 otherwise."
+        ),
     ),
 ) -> None:
     """Run a red-team scan against a target."""
@@ -270,8 +273,18 @@ def scan(
         console.print(f"JSON report: [cyan]{json_path}[/]")
         console.print(f"HTML report: [cyan]{html_path}[/]")
 
-    if exit_on_finding and summary.vulnerable_count > 0:
-        raise typer.Exit(code=1)
+    if exit_on_finding:
+        if summary.vulnerable_count > 0:
+            raise typer.Exit(code=1)
+        # A run in which every probe errored must not pass a CI gate: it means
+        # the scan never actually exercised the target (bad spec, missing key,
+        # network down), not that the target is safe.
+        if summary.total > 0 and summary.error_count == summary.total:
+            console.print(
+                "[bold red]All probes errored - failing the gate "
+                "(exit 3).[/] The target was never successfully scanned."
+            )
+            raise typer.Exit(code=3)
 
 
 async def _run_scan(

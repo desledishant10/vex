@@ -45,6 +45,11 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 - Removed the `google` optional dependency (deprecated SDK, no Google provider).
 - Added a `py.typed` marker; trimmed `.env.example` to variables the code reads;
   fixed the HTML report footer repository link; documented `--verdict-mode`.
+- CI now imports the provider, CLI, and report modules on every matrix Python
+  (new `tests/test_imports.py`), so a syntax/import error in them fails the
+  build instead of passing green.
+- Bumped GitHub Actions off the deprecated Node 20 runtime
+  (`actions/checkout@v5`, `actions/setup-python@v6`, `codecov/codecov-action@v5`).
 
 ### Planned for v0.3
 - MCP server target adapter - probe servers exposing tools to agents

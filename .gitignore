@@ -73,3 +73,6 @@ dmypy.json
 *.key
 *.pem
 secrets/
+
+# Local-only disclosure email drafts (personal, not for publishing)
+docs/disclosures/*-email-draft.md

@@ -32,4 +32,4 @@ exploit details for unfixed issues are redacted until vendors respond.
 
 | File | Vendor | Status | Severity |
 |---|---|---|---|
-| [`2026-05-anthropic-reversed-encoding.md`](2026-05-anthropic-reversed-encoding.md) | Anthropic | Draft | Low |
+| [`2026-05-anthropic-reversed-encoding.md`](2026-05-anthropic-reversed-encoding.md) | Anthropic | Submitted 2026-06-07 | Low |

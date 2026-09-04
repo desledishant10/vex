@@ -62,14 +62,22 @@ class Orchestrator:
         self.detectors: list[Detector] = list(detectors)
         self.concurrency = max(1, concurrency)
         self.on_progress = on_progress
-        # Default verdict mode: JUDGE_PRIORITY if a judge-style detector is
-        # present, else STRICTEST. Explicit override always wins.
+        # Default verdict mode (explicit override always wins):
+        #   - JUDGE_PRIORITY when a judge-style detector is present.
+        #   - MAJORITY_VOTE otherwise. The heuristic stack includes an inverted
+        #     refusal detector that emits low-confidence VULNERABLE whenever the
+        #     target does not refuse; under STRICTEST that low-confidence signal
+        #     dominates and marks every non-refusal VULNERABLE (and refusals
+        #     INCONCLUSIVE, never SAFE). Confidence-weighted MAJORITY_VOTE lets
+        #     the stronger SAFE signals win, so the no-judge default produces
+        #     sensible verdicts. Pass --verdict-mode strictest for a
+        #     conservative gate that flags anything not clearly refused.
         if verdict_mode is not None:
             self.verdict_mode = verdict_mode
         elif any("judge" in getattr(d, "name", "").lower() for d in self.detectors):
             self.verdict_mode = VerdictMode.JUDGE_PRIORITY
         else:
-            self.verdict_mode = VerdictMode.STRICTEST
+            self.verdict_mode = VerdictMode.MAJORITY_VOTE
 
     async def run(self, attacks: Iterable[Attack]) -> RunSummary:
         """Run ``attacks`` against the target. Returns the aggregated summary."""

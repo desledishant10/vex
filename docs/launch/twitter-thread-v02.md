@@ -130,7 +130,7 @@ This is what red-teaming maturity looks like - not "find lots of bugs," but "sep
 v0.2.0 is live:
 
 ```
-pip install --upgrade 'vex[all]'
+pip install --upgrade 'vexscan[all]'
 vex scan --target anthropic:claude-sonnet-4-6 \
          --judge anthropic:claude-haiku-4-5-20251001 \
          --output ./runs/v02

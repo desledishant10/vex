@@ -164,7 +164,7 @@ Vex v0.2.0 is on GitHub now. The full v0.1 → v0.2 calibration analysis with pe
 If you red-team AI products for a living and the existing tools feel like they're solving last year's problem, give it a spin:
 
 ```bash
-pip install "vex[all]"
+pip install "vexscan[all]"
 export ANTHROPIC_API_KEY=sk-ant-...
 vex scan --target anthropic:claude-sonnet-4-6 \
          --judge anthropic:claude-haiku-4-5-20251001 \

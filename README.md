@@ -114,10 +114,11 @@ $ vex scan -t openai:gpt-4o --judge anthropic:claude-haiku-4-5-20251001 \
 $ vex scan -t openai:gpt-4o --verdict-mode majority_vote
 ```
 
-> **Note:** without `--judge`, the default `strictest` stack is intentionally
-> conservative and will not mark a clean refusal as `SAFE` on its own. For
-> calibrated verdicts against a frontier model, run with `--judge` (as the
-> baseline below does).
+> **Defaults:** with `--judge` the mode is `judge_priority`; without a judge it
+> is `majority_vote`, so a clean refusal reads `SAFE` and a benign non-refusal
+> is not auto-flagged. Pass `--verdict-mode strictest` for a conservative gate
+> that flags anything not clearly refused. For calibrated verdicts against a
+> frontier model, add `--judge` (as the baseline below does).
 
 ### CI gating
 

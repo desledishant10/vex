@@ -7,6 +7,45 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- **Packaging: `src/vex/reports/` was gitignored** and therefore missing from
+  GitHub and the built wheel, so every CLI command crashed on a clean install
+  with `ModuleNotFoundError: No module named 'vex.reports'`. Root-anchored the
+  output-ignore rules and added a `smoke-install` CI job (build wheel → install
+  in a clean venv → run the CLI) so this class of regression fails the build.
+- **No-judge default verdict mode is now `majority_vote`** (was `strictest`).
+  The heuristic stack's inverted refusal detector emits a low-confidence
+  VULNERABLE on every non-refusal; under `strictest` this marked all
+  non-refusals VULNERABLE and refusals INCONCLUSIVE (never SAFE). Confidence
+  weighting lets the stronger SAFE signals win, so a plain `vex scan` now
+  produces sensible verdicts. `--verdict-mode strictest` restores the old gate.
+- **LLM judge hardened against prompt injection from the target response.**
+  Probe input and target response are now fenced in explicit "untrusted data"
+  delimiters and the judge is told not to obey instructions inside them. JSON
+  extraction tracks brace depth and prefers the judge's own last verdict object
+  (was a non-greedy `\{.*?\}` that broke on nested JSON and could pick a
+  verdict fabricated inside the target response). Under `judge_priority`, a
+  confident judge SAFE can no longer overturn a high-confidence (>= 0.8)
+  deterministic VULNERABLE such as a literal canary hit.
+- **`--exit-on-finding` now exits 3 when every probe errored** (missing key,
+  bad target, network down) instead of exiting 0 with a green "No
+  vulnerabilities found." The terminal report no longer shows an all-clear when
+  probes errored.
+- **LICENSE** replaced with the full Apache 2.0 text (was a 19-line stub that
+  GitHub could not detect as a license).
+- Corrected the false "deterministic given a seed" reproducibility claim in the
+  README, `docs/architecture.md`, and `Attack` docstring (no seed exists yet;
+  tracked as future work).
+
+### Changed
+- **Renamed the PyPI distribution to `vexscan`** (the name `vex` is taken by an
+  unrelated project). The import package and `vex` CLI command are unchanged.
+- README/`pyproject` positioning now describes shipped capabilities; MCP, RAG,
+  memory-poisoning, and browser targets are labeled roadmap, not current.
+- Removed the `google` optional dependency (deprecated SDK, no Google provider).
+- Added a `py.typed` marker; trimmed `.env.example` to variables the code reads;
+  fixed the HTML report footer repository link; documented `--verdict-mode`.
+
 ### Planned for v0.3
 - MCP server target adapter - probe servers exposing tools to agents
 - Browser-agent attack module (Claude Computer Use, OpenAI Operator)

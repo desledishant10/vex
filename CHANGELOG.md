@@ -7,6 +7,21 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Planned for v0.3
+- MCP server target adapter - probe servers exposing tools to agents
+- Browser-agent attack module (Claude Computer Use, OpenAI Operator)
+- Multi-turn crescendo attack family
+- Cross-session memory poisoning probes
+- Entry-point-based plugin discovery (`vex.attacks` group)
+- Reproducibility seeds for stochastic attacks
+
+## [0.2.1] - 2026-10-24
+
+First release published to PyPI as the `vexscan` distribution, cut through the
+GitHub Actions Trusted Publisher (OIDC) pipeline. Rolls up the post-audit
+packaging and correctness fixes; no attack or detector behavior changed beyond
+what is listed below.
+
 ### Fixed
 - **Packaging: `src/vex/reports/` was gitignored** and therefore missing from
   GitHub and the built wheel, so every CLI command crashed on a clean install
@@ -36,6 +51,10 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
 - Corrected the false "deterministic given a seed" reproducibility claim in the
   README, `docs/architecture.md`, and `Attack` docstring (no seed exists yet;
   tracked as future work).
+- **Build metadata pinned to a PyPI-accepted version.** The build backend is
+  pinned to `hatchling>=1.27,<1.32` so the wheel and sdist carry
+  `Metadata-Version: 2.4`; hatchling 1.32.x stamps `2.5`, which current twine
+  and the PyPI publish action reject as invalid.
 
 ### Changed
 - **Renamed the PyPI distribution to `vexscan`** (the name `vex` is taken by an
@@ -50,14 +69,9 @@ and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
   build instead of passing green.
 - Bumped GitHub Actions off the deprecated Node 20 runtime
   (`actions/checkout@v5`, `actions/setup-python@v6`, `codecov/codecov-action@v5`).
-
-### Planned for v0.3
-- MCP server target adapter - probe servers exposing tools to agents
-- Browser-agent attack module (Claude Computer Use, OpenAI Operator)
-- Multi-turn crescendo attack family
-- Cross-session memory poisoning probes
-- Entry-point-based plugin discovery (`vex.attacks` group)
-- Reproducibility seeds for stochastic attacks
+- Releases now publish to PyPI through a GitHub Actions Trusted Publisher
+  (OIDC); the workflow environment targets the `vexscan` project and no API
+  token is stored.
 
 ## [0.2.0] - 2026-05-13
 
@@ -166,6 +180,7 @@ vulnerability still correctly flagged).
 - All exfiltration scenarios use a benign `VEX-EXFIL-CANARY` canary
 - No real harmful content shipped in the default attack library
 
-[Unreleased]: https://github.com/desledishant10/vex/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/desledishant10/vex/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/desledishant10/vex/releases/tag/v0.2.1
 [0.2.0]: https://github.com/desledishant10/vex/releases/tag/v0.2.0
 [0.1.0]: https://github.com/desledishant10/vex/releases/tag/v0.1.0

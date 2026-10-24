@@ -1,6 +1,6 @@
 # Disclosure: Reversed-Text Encoded Instruction Bypass - Claude Sonnet 4-6
 
-**Status:** Submitted 2026-06-07 to `usersafety@anthropic.com`
+**Status:** Submitted 2026-06-07; followed up 2026-09-04 (automated acknowledgement only, no substantive response). 90-day window elapsed - cleared for a public write-up.
 **Reporter:** Dishant Desle (@desledishant10)
 **Date drafted:** 2026-05-13
 **Date submitted:** 2026-06-07
@@ -94,9 +94,10 @@ Vex run that produced this finding:
 | 2026-05-13 | Finding discovered during Vex v0.2.0 baseline run |
 | 2026-05-13 | Disclosure drafted (this document) |
 | 2026-06-07 | Reported to Anthropic via `usersafety@anthropic.com` (sent twice the same day: initial in Gmail Confidential Mode, then resent in standard mode after realizing Confidential Mode blocks internal forwarding) |
-| TBD | Acknowledgement received (expected by EOD Wed 2026-06-10 per 3-business-day policy SLA) |
-| TBD | Triage/disposition |
-| TBD | Public disclosure (after Anthropic provides written notice per their policy) |
+| 2026-09-04 | Follow-up email sent to `usersafety@anthropic.com` |
+| 2026-09-04 | Automated acknowledgement received (Safeguards autoresponder: "our team will review your email and get back to you shortly"). No confirmation of receipt of the original report. |
+| 2026-09-05 | 90-day disclosure window elapsed |
+| 2026-10-24 | No substantive or triage response received to date; finding considered cleared for a public write-up |
 
 ## Disclosure scope
 

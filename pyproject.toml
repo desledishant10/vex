@@ -1,5 +1,7 @@
 [build-system]
-requires = ["hatchling"]
+# Pinned below 1.32: that series stamps Metadata-Version 2.5, which current
+# twine and the PyPI publish action reject. 1.27-1.31 emit the accepted 2.4.
+requires = ["hatchling>=1.27,<1.32"]
 build-backend = "hatchling.build"
 
 [project]

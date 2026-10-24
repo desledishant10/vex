@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/vex
+      url: https://pypi.org/p/vexscan
     permissions:
       id-token: write
       contents: write
